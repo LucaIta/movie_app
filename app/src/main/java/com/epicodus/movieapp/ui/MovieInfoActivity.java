@@ -54,7 +54,7 @@ public class MovieInfoActivity extends AppCompatActivity {
                     String jsonData = response.body().string();
                     if (response.isSuccessful()) {
                         Log.v(TAG, jsonData);
-                        mMovies = tmdbService.processResults(response);
+                        mMovies = tmdbService.processResults(jsonData);
 
                         MovieInfoActivity.this.runOnUiThread(new Runnable() {
                             @Override

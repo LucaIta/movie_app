@@ -40,12 +40,12 @@ public class TmdbService {
         call.enqueue(callback);
     }
 
-    public ArrayList<Movie> processResults(Response response) {
+    public ArrayList<Movie> processResults(String jsonData) {
         ArrayList<Movie> movies = new ArrayList<>();
 
         try {
-            String jsonData = response.body().string();
-            if (response.isSuccessful()) {
+
+            //if (response.isSuccessful()) {
                 JSONObject tmdbJSON = new JSONObject(jsonData);
                 JSONArray resultsJSON = tmdbJSON.getJSONArray("results");
                 for (int i = 0; i < resultsJSON.length(); i++) {
@@ -55,10 +55,10 @@ public class TmdbService {
                     Movie movie = new Movie(title);
                     movies.add(movie);
                 }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch(JSONException e) {
+            //}
+        }
+
+        catch(JSONException e) {
             e.printStackTrace();
         }
         return movies;
