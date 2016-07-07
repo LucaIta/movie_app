@@ -60,12 +60,17 @@ public class MovieInfoActivity extends AppCompatActivity {
                             @Override
                             public void run() {
                                 String[] movieTitles = new String[mMovies.size()];
+                                Log.v(TAG, "1");
                                 for (int i = 0; i < movieTitles.length; i++) {
                                     movieTitles[i] = mMovies.get(i).getTitle();
                                 }
                                 ArrayAdapter adapter = new ArrayAdapter(MovieInfoActivity.this,
                                         android.R.layout.simple_list_item_1, movieTitles);
                                 mListView.setAdapter(adapter);
+
+                                for (Movie movie : mMovies) {
+                                    Log.d(TAG, "Title: " + movie.getTitle());
+                                }
                             }
                         });
                     }
